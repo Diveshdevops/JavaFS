@@ -1,0 +1,77 @@
+package pack;
+class Course {
+ private String courseName;
+ private String instructor;
+ private int credits;
+
+ 
+ public Course(String courseName, String instructor, int credits) {
+     this.courseName = courseName;
+     this.instructor = instructor;
+     this.credits = credits;
+ }
+
+ 
+ public void displayDetails() {
+     System.out.println("Course Details:");
+     System.out.println("Course Name: " + courseName);
+     System.out.println("Instructor: " + instructor);
+     System.out.println("Credits: " + credits);
+ }
+
+}
+
+
+class OnlineCourse extends Course {
+ private String platform;
+ private int duration; 
+
+ 
+ public OnlineCourse(String courseName, String instructor, int credits, String platform, int duration) {
+     super(courseName, instructor, credits);
+     this.platform = platform;
+     this.duration = duration;
+ }
+
+ 
+ @Override
+ public void displayDetails() {
+     super.displayDetails();
+     System.out.println("Platform: " + platform);
+     System.out.println("Duration: " + duration + " hours");
+ }
+
+ 
+ public boolean isEligibleForCertificate() {
+     return duration >= 10; 
+ }
+}
+
+
+
+
+
+
+
+public class CourseExample {
+
+	public static void main(String[] args) {
+		
+		 Course course = new Course("Data Structures", "Dr. Smith", 4);
+	     System.out.println("General Course:");
+	     course.displayDetails();
+
+	     OnlineCourse onlineCourse = new OnlineCourse("Java Programming", "Prof. Johnson", 3, "Coursera", 12);
+	     System.out.println("\nOnline Course:");
+	     onlineCourse.displayDetails();
+
+	   
+	     if (onlineCourse.isEligibleForCertificate()) {
+	         System.out.println("This course is eligible for a certificate.");
+	     } else {
+	         System.out.println("This course is not eligible for a certificate.");
+	     }
+
+	}
+
+}
